@@ -31,6 +31,7 @@ router.get("/", async (req, res) => {
 
     res.json(response);
   } catch (error) {
+    console.error(error);
     res.status(500).json(error);
   }
 });
@@ -54,6 +55,7 @@ router.get("/:id", async (req, res) => {
       res.status(404).json({});
     }
   } catch (error) {
+    console.error(error);
     res.status(500).json(error);
   }
 });
@@ -70,6 +72,7 @@ router.get("/name/:name", async (req, res) => {
       res.status(404).json([]);
     }
   } catch (error) {
+    console.error(error);
     res.status(500).json(error);
   }
 });
@@ -82,6 +85,7 @@ router.post("/", async (req, res) => {
     const createdUser = await user.save();
     return res.status(201).json(createdUser);
   } catch (error) {
+    console.error(error);
     res.status(500).json(error);
   }
 });
@@ -98,6 +102,7 @@ router.delete("/:id", async (req, res) => {
       res.status(404).json({});
     }
   } catch (error) {
+    console.error(error);
     res.status(500).json(error);
   }
 });
@@ -113,6 +118,7 @@ router.put("/:id", async (req, res) => {
       res.status(404).json({});
     }
   } catch (error) {
+    console.error(error);
     res.status(500).json(error);
   }
 });
