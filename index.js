@@ -2,6 +2,7 @@ const express = require("express");
 const { userRouter } = require("./routes/user.routes.js");
 const { carRouter } = require("./routes/car.routes.js");
 const { brandRouter } = require("./routes/brand.routes.js");
+const cors = require("cors");
 
 const main = async () => {
   // Conexión a la BBDD
@@ -13,6 +14,11 @@ const main = async () => {
   const server = express();
   server.use(express.json());
   server.use(express.urlencoded({ extended: false }));
+  server.use(
+    cors({
+      origin: "http://localhost:3000",
+    })
+  );
 
   // Rutas
   const router = express.Router();

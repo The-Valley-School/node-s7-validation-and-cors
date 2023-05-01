@@ -7,7 +7,6 @@ const router = express.Router();
 
 // CRUD: READ
 router.get("/", async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
   try {
     // Asi leemos query params
     const page = parseInt(req.query.page);
@@ -35,7 +34,6 @@ router.get("/", async (req, res) => {
 
 // CRUD: READ
 router.get("/:id", async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
   try {
     const id = req.params.id;
     const brand = await Brand.findById(id);
@@ -52,7 +50,6 @@ router.get("/:id", async (req, res) => {
 
 // CRUD: Operación custom, no es CRUD
 router.get("/name/:name", async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
   const brandName = req.params.name;
 
   try {
@@ -70,7 +67,6 @@ router.get("/name/:name", async (req, res) => {
 
 // CRUD: CREATE
 router.post("/", async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
   try {
     const brand = new Brand(req.body);
     const createdBrand = await brand.save();
@@ -87,7 +83,6 @@ router.post("/", async (req, res) => {
 
 // CRUD: DELETE
 router.delete("/:id", async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
   try {
     const id = req.params.id;
     const brandDeleted = await Brand.findByIdAndDelete(id);
@@ -104,7 +99,6 @@ router.delete("/:id", async (req, res) => {
 
 // CRUD: UPDATE
 router.put("/:id", async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
   try {
     const id = req.params.id;
     const brandUpdated = await Brand.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
