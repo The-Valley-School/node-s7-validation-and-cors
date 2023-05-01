@@ -6,17 +6,17 @@ function App() {
   const [brands, setBrands] = React.useState();
 
   React.useEffect(() => {
-    fetch(apiUrl).then((brands) => {
-      setBrands(brands);
-    });
+    fetch(apiUrl)
+      .then((brands) => brands.json())
+      .then((brandsParsed) => setBrands(brandsParsed));
   }, []);
 
   return (
     <div className="App">
       <h2>Marcas:</h2>
       <ul>
-        {brands?.map((brand) => (
-          <li>{brand.name}</li>
+        {brands?.data?.map((brand) => (
+          <li key={brand._id}>{brand.name}</li>
         ))}
       </ul>
     </div>
