@@ -7,20 +7,24 @@ const userSchema = new Schema(
     firstName: {
       type: String,
       required: true,
+      trim: true,
     },
     lastName: {
       type: String,
       required: true,
+      trim: true,
     },
     phone: {
       type: String,
       required: false,
+      trim: true,
     },
     address: {
       type: {
         street: {
           type: String,
           required: true,
+          trim: true,
         },
         number: {
           type: Number,
@@ -29,6 +33,7 @@ const userSchema = new Schema(
         city: {
           type: String,
           required: true,
+          trim: true,
         },
       },
       required: false,

@@ -111,7 +111,7 @@ router.delete("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const userUpdated = await User.findByIdAndUpdate(id, req.body, { new: true });
+    const userUpdated = await User.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
     if (userUpdated) {
       res.json(userUpdated);
     } else {

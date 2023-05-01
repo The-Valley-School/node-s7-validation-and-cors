@@ -73,7 +73,11 @@ router.post("/", async (req, res) => {
     return res.status(201).json(createdBrand);
   } catch (error) {
     console.error(error);
-    res.status(500).json(error);
+    if (error?.name === "ValidationError") {
+      res.status(400).json(error);
+    } else {
+      res.status(500).json(error);
+    }
   }
 });
 
@@ -97,7 +101,7 @@ router.delete("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const brandUpdated = await Brand.findByIdAndUpdate(id, req.body, { new: true });
+    const brandUpdated = await Brand.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
     if (brandUpdated) {
       res.json(brandUpdated);
     } else {
@@ -105,7 +109,11 @@ router.put("/:id", async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json(error);
+    if (error?.name === "ValidationError") {
+      res.status(400).json(error);
+    } else {
+      res.status(500).json(error);
+    }
   }
 });
 

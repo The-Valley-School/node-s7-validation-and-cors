@@ -102,7 +102,7 @@ router.delete("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const carUpdated = await Car.findByIdAndUpdate(id, req.body, { new: true });
+    const carUpdated = await Car.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
     if (carUpdated) {
       res.json(carUpdated);
     } else {

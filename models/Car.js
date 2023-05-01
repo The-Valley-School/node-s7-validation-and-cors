@@ -12,10 +12,12 @@ const carSchema = new Schema(
     model: {
       type: String,
       required: true,
+      trim: true,
     },
     plate: {
       type: String,
       required: false,
+      trim: true,
     },
     power: {
       type: Number,
