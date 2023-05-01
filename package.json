@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "normalize:brands": "node ./normalization/brand.normalization.js ",
     "seed:users": "node ./seeds/user.seed.js",
     "seed:cars": "node ./seeds/car.seed.js",
     "seed:brands": "node ./seeds/brand.seed.js",
